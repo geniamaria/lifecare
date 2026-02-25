@@ -6,25 +6,25 @@ export default function Parceiros() {
       nome: "Profile Technician",
       descricao:
         "Empresa especializada em manutenção e calibração de equipamentos hospitalares.",
-      logo: "/logos/profile.png",
+      logo: "/logo1.avif",
     },
     {
       nome: "Spacemedical",
       descricao:
         "Fornecedor internacional de tecnologia médica avançada para unidades hospitalares.",
-      logo: "/logos/space.png",
+      logo: "/logo2.avif",
     },
     {
       nome: "Diagnostix",
       descricao:
         "Soluções modernas para diagnóstico clínico e laboratorial.",
-      logo: "/logos/diagnostix.png",
+      logo: "/logo3.avif",
     },
     {
       nome: "Bienconcept",
       descricao:
         "Consultoria estratégica e distribuição de equipamentos médicos premium.",
-      logo: "/logos/bienconcept.png",
+      logo: "/logo4.avif",
     },
   ]
 

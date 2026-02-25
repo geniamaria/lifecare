@@ -1,71 +1,138 @@
-"use client"; 
+"use client";
 
+import React from "react";
+import ProductCard from "../../components/farmacia/productCard";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import React, { useState } from "react";
-import Sidebar from "../../components/farmacia/sidebar";
-import ProductGrid from "../../components/farmacia/produtosgrid";
-import { Product } from "../types/produtos";
+const products = Array.from({ length: 9 }).map((_, index) => ({
+  id: index,
+  name: "Monitor CT40",
+  description:
+    "Equipamento médico de alta precisão para monitoramento contínuo de sinais vitais.",
+  image: "/stetoscopio.avif",
+  category: "Monitorização",
+}));
 
-const mockProducts: Product[] = [
-  {
-    id: "1",
-    name: "Monitor CT40",
-    description:
-      "Monitor multiparamétrico ideal para hospitais e clínicas.",
-    image: "/stetoscopio.avif",
-    category: "Monitor CT40",
-  },
-  {
-    id: "2",
-    name: "Glucometro Pro",
-    description:
-      "Equipamento moderno para medição de glicose no sangue.",
-    image: "/stetoscopio.avif",
-    category: "Glucometros",
-  },
-];
-
-const categories = [
-  "Glucometros",
-  "Monitor CT40",
-  "Caresens N",
-  "Electrolyte Analyzer",
-  "Profissional Care",
-];
-
-const FarmaciaPage: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
-
-  const filteredProducts = selectedCategory
-    ? mockProducts.filter(
-        (product) => product.category === selectedCategory
-      )
-    : mockProducts;
-
+export default function FarmaciaPage() {
   return (
-     <>
-      <Navbar />
-    <div className="container mx-auto py-10">
-      
-      <h1 className="text-3xl font-bold mb-8 text-center">
-        Farmácia
-      </h1>
+    <>
+    <Navbar />
+    <section className="min-h-screen bg-slate-100 py-10">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
+          Farmácia
+        </h1>
 
-      <div className="flex gap-8">
-        <Sidebar
-          categories={categories}
-          onSelectCategory={setSelectedCategory}
-        />
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          
+          <aside className="bg-white rounded-xl shadow-md p-6 space-y-6">
+            
+            <div>
+              <h2 className="font-semibold text-lg text-blue-700 mb-4">
+                Categorias
+              </h2>
 
-        <div className="flex-1">
-          <ProductGrid products={filteredProducts} />
+              <ul className="space-y-2 text-sm">
+                {[
+                  "GLUCOMETROS",
+                  "Monitor CT40",
+                  "CARLSEN N",
+                  "Electrolyte Analyzer",
+                  "Material laboratorial",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="p-2 rounded bg-blue-400  hover:bg-blue-50 cursor-pointer transition"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="font-semibold text-lg text-blue-700 mb-3">
+                Pesquisar
+              </h2>
+              <input
+                type="text"
+                placeholder="Procurar..."
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:outline-none"
+              />
+            </div>
+            <div>
+              <h2 className="font-semibold text-lg text-blue-700 mb-4">
+                Categorias
+              </h2>
+
+              <ul className="space-y-2 text-sm">
+                {[
+                  "GLUCOMETROS",
+                  "Monitor CT40",
+                  "CARLSEN N",
+                  "Electrolyte Analyzer",
+                  "Material laboratorial",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="p-2 rounded bg-blue-400  hover:bg-blue-50 cursor-pointer transition"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="font-semibold text-lg text-blue-700 mb-4">
+                Categorias
+              </h2>
+
+              <ul className="space-y-2 text-sm">
+                {[
+                  "GLUCOMETROS",
+                  "Monitor CT40",
+                  "CARLSEN N",
+                  "Electrolyte Analyzer",
+                  "Material laboratorial",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="p-2 rounded bg-blue-400 hover:bg-blue-50 cursor-pointer transition"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </aside>
+
+          <div className="lg:col-span-3">
+          
+            <div className="flex justify-between items-center mb-6">
+              <span className="text-sm text-gray-600">
+                Mostrando produtos
+              </span>
+
+              <select className="border rounded px-3 py-2 text-sm">
+                <option>Catálogo</option>
+                <option>Mais Recentes</option>
+                <option>Preço: Menor para Maior</option>
+              </select>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
-     <Footer />
+    </section>
+     <Footer /> 
      </>
   );
-};
-
-export default FarmaciaPage;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "./produtosCard";
+import ProductCard from "./productCard";
 import { Product } from "../../app/types/produtos";
 
 interface Props {
